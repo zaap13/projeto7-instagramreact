@@ -3,8 +3,9 @@ import React from "react";
 function Post(props) {
   const [like, setLike] = React.useState(props.clicked);
   const [qtdLike, setqtdLike] = React.useState(props.qtdLike);
+  const [save, setSave] = React.useState(props.saved);
 
-  const handleOnClick = () => {
+  const likePost = () => {
     let newLike = 0;
     if (like === "heart-outline") {
       newLike = qtdLike + 1;
@@ -14,6 +15,14 @@ function Post(props) {
       setLike("heart-outline");
     }
     setqtdLike(newLike);
+  };
+
+  const savePost = () => {
+    if (save === "bookmark-outline") {
+      setSave("bookmark-sharp");
+    } else {
+      setSave("bookmark-outline");
+    }
   };
 
   return (
@@ -29,7 +38,7 @@ function Post(props) {
       </div>
 
       <div class="conteudo">
-        <img src={props.foto} onClick={() => handleOnClick()} />
+        <img src={props.foto} onDoubleClick={() => likePost()} />
       </div>
 
       <div class="fundo">
@@ -38,13 +47,13 @@ function Post(props) {
             <ion-icon
               class={like}
               name={like}
-              onClick={() => handleOnClick()}
+              onClick={() => likePost()}
             ></ion-icon>
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon name="bookmark-outline"></ion-icon>
+            <ion-icon name={save} onClick={() => savePost()}></ion-icon>
           </div>
         </div>
 
@@ -70,6 +79,7 @@ export default function Posts() {
       nomelike: "respondeai",
       qtdLike: 101523,
       clicked: "heart-outline",
+      saved: "bookmark-outline",
     },
     {
       nome: "barked",
@@ -79,6 +89,7 @@ export default function Posts() {
       nomelike: "adorable_animals",
       qtdLike: 99159,
       clicked: "heart-outline",
+      saved: "bookmark-outline",
     },
   ];
 
@@ -93,6 +104,7 @@ export default function Posts() {
           nomelike={p.nomelike}
           qtdLike={p.qtdLike}
           clicked={p.clicked}
+          saved={p.saved}
         />
       ))}
     </div>
