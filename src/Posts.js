@@ -1,4 +1,21 @@
+import React from "react";
+
 function Post(props) {
+  const [like, setLike] = React.useState(props.clicked);
+  const [qtdLike, setqtdLike] = React.useState(props.qtdLike);
+
+  const handleOnClick = () => {
+    let newLike = 0;
+    if (like === "heart-outline") {
+      newLike = qtdLike + 1;
+      setLike("heart-sharp");
+    } else {
+      newLike = qtdLike - 1;
+      setLike("heart-outline");
+    }
+    setqtdLike(newLike);
+  };
+
   return (
     <div class="post">
       <div class="topo">
@@ -12,13 +29,17 @@ function Post(props) {
       </div>
 
       <div class="conteudo">
-        <img src={props.foto} />
+        <img src={props.foto} onClick={() => handleOnClick()} />
       </div>
 
       <div class="fundo">
         <div class="acoes">
           <div>
-            <ion-icon name="heart-outline"></ion-icon>
+            <ion-icon
+              class={like}
+              name={like}
+              onClick={() => handleOnClick()}
+            ></ion-icon>
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
@@ -31,7 +52,7 @@ function Post(props) {
           <img src={props.imglike} />
           <div class="texto">
             Curtido por <strong>{props.nomelike}</strong> e{" "}
-            <strong>outras {props.qtdlike} pessoas</strong>
+            <strong>outras {qtdLike} pessoas</strong>
           </div>
         </div>
       </div>
@@ -47,7 +68,8 @@ export default function Posts() {
       foto: "./img/gato-telefone.svg",
       imglike: "./img/respondeai.svg",
       nomelike: "respondeai",
-      qtdlike: 101.523,
+      qtdLike: 101523,
+      clicked: "heart-outline",
     },
     {
       nome: "barked",
@@ -55,7 +77,8 @@ export default function Posts() {
       foto: "./img/dog.svg",
       imglike: "./img/adorable_animals.svg",
       nomelike: "adorable_animals",
-      qtdlike: 99.159,
+      qtdLike: 99159,
+      clicked: "heart-outline",
     },
   ];
 
@@ -68,7 +91,8 @@ export default function Posts() {
           foto={p.foto}
           imglike={p.imglike}
           nomelike={p.nomelike}
-          qtdlike={p.qtdlike}
+          qtdLike={p.qtdLike}
+          clicked={p.clicked}
         />
       ))}
     </div>
