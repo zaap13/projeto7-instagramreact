@@ -15,9 +15,9 @@ export default function Usuario(props) {
     <div class="usuario">
       <img src={image} onClick={() => changeImg()}/>
       <div class="texto">
-        <strong>{nome}</strong>
+        <strong>catanacomics</strong>
         <span>
-          Catana
+        {nome}
           <ion-icon name="pencil" onClick={() => changeName()}></ion-icon>
         </span>
       </div>

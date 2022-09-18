@@ -4,6 +4,17 @@ function Post(props) {
   const [like, setLike] = React.useState(props.clicked);
   const [qtdLike, setqtdLike] = React.useState(props.qtdLike);
   const [save, setSave] = React.useState(props.saved);
+  const [animation, setAnimation] = React.useState("");
+
+  const animationLike = () => {
+    setAnimation("like-heart");
+    if (like === "heart-outline") {
+      likePost();
+    }
+    setTimeout(() => {
+      setAnimation("");
+    }, 1000);
+  };
 
   const likePost = () => {
     let newLike = 0;
@@ -38,7 +49,8 @@ function Post(props) {
       </div>
 
       <div class="conteudo">
-        <img src={props.foto} onDoubleClick={() => likePost()} />
+        <img src={props.foto} onDoubleClick={() => animationLike()} />
+        <ion-icon class={animation} name="heart-sharp"></ion-icon>
       </div>
 
       <div class="fundo">
@@ -53,6 +65,7 @@ function Post(props) {
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
+            <div></div>
             <ion-icon name={save} onClick={() => savePost()}></ion-icon>
           </div>
         </div>
