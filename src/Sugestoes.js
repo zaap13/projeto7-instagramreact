@@ -1,15 +1,15 @@
 function Sugestao(props) {
   return (
-    <div class="sugestao">
-      <div class="usuario">
-        <img src={props.imagem} />
-        <div class="texto">
-          <div class="nome">{props.nome}</div>
-          <div class="razao">{props.razao}</div>
+    <div className="sugestao">
+      <div className="usuario">
+        <img src={props.imagem} alt="Usuario"/>
+        <div className="texto">
+          <div className="nome">{props.nome}</div>
+          <div className="razao">{props.razao}</div>
         </div>
       </div>
 
-      <div class="seguir">Seguir</div>
+      <div className="seguir">Seguir</div>
     </div>
   );
 }
@@ -40,8 +40,8 @@ export default function Sugestoes() {
   ];
 
   return (
-    <div class="sugestoes">
-      <div class="titulo">
+    <div className="sugestoes">
+      <div className="titulo">
         Sugestões para você
         <div>Ver tudo</div>
       </div>

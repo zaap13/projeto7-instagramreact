@@ -12,9 +12,9 @@ export default function Usuario(props) {
     setImage(prompt("Insira URL da noma imagem de perfil"));
   };
   return (
-    <div class="usuario">
-      <img src={image} onClick={() => changeImg()}/>
-      <div class="texto">
+    <div className="usuario">
+      <img src={image} alt="Usuario" onClick={() => changeImg()}/>
+      <div className="texto">
         <strong>catanacomics</strong>
         <span>
         {nome}

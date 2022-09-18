@@ -37,24 +37,24 @@ function Post(props) {
   };
 
   return (
-    <div class="post">
-      <div class="topo">
-        <div class="usuario">
-          <img src={props.imagem} />
+    <div className="post">
+      <div className="topo">
+        <div className="usuario">
+          <img src={props.imagem} alt="Usuario"/>
           {props.nome}
         </div>
-        <div class="acoes">
+        <div className="acoes">
           <ion-icon name="ellipsis-horizontal"></ion-icon>
         </div>
       </div>
 
-      <div class="conteudo">
-        <img src={props.foto} onDoubleClick={() => animationLike()} />
+      <div className="conteudo">
+        <img src={props.foto} alt="Foto" onDoubleClick={() => animationLike()} />
         <ion-icon class={animation} name="heart-sharp"></ion-icon>
       </div>
 
-      <div class="fundo">
-        <div class="acoes">
+      <div className="fundo">
+        <div className="acoes">
           <div>
             <ion-icon
               class={like}
@@ -70,9 +70,9 @@ function Post(props) {
           </div>
         </div>
 
-        <div class="curtidas">
-          <img src={props.imglike} />
-          <div class="texto">
+        <div className="curtidas">
+          <img src={props.imglike} alt="Curtidor"/>
+          <div className="texto">
             Curtido por <strong>{props.nomelike}</strong> e{" "}
             <strong>outras {qtdLike} pessoas</strong>
           </div>
@@ -107,7 +107,7 @@ export default function Posts() {
   ];
 
   return (
-    <div class="posts">
+    <div className="posts">
       {infoPosts.map((p) => (
         <Post
           nome={p.nome}
